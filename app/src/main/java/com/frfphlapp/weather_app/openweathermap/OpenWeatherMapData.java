@@ -9,7 +9,7 @@ public class OpenWeatherMapData {
     @SerializedName("coord")
     public Coord coord;
     @SerializedName("weather")
-    public List<Weather> weather = null;
+    public List<Weather> weather;
     @SerializedName("base")
     public String base;
     @SerializedName("main")
@@ -28,12 +28,6 @@ public class OpenWeatherMapData {
     public String name;
     @SerializedName("cod")
     public Integer cod;
-
-
-    public String getIcon(){
-
-        return null;
-    }
 
 
 }

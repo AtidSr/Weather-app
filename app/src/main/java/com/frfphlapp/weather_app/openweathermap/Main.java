@@ -19,4 +19,31 @@ public class Main {
     @SerializedName("grnd_level")
     private Double grndLevel;
 
+    public Double getTemp() {
+        return temp;
+    }
+
+    public Double getPressure() {
+        return pressure;
+    }
+
+    public Integer getHumidity() {
+        return humidity;
+    }
+
+    public Double getTempMin() {
+        return tempMin;
+    }
+
+    public Double getTempMax() {
+        return tempMax;
+    }
+
+    public Double getSeaLevel() {
+        return seaLevel;
+    }
+
+    public Double getGrndLevel() {
+        return grndLevel;
+    }
 }
