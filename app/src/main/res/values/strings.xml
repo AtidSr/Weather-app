@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Weather-App</string>
+    <string name="hint">Enter city name</string>
+
+    <string-array name="countries_array">
+        <item>Afghanistan</item>
+        <item>Albania</item>
+        <item>Algeria</item>
+        <item>American Samoa</item>
+        <item>Andorra</item>
+        <item>Angola</item>
+        <item>Anguilla</item>
+        <item>Antarctica</item>
+    </string-array>
+
+
 </resources>
