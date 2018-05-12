@@ -8,19 +8,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DateTimeAPIManager {
 
     private static Retrofit retrofit = null;
+    private static HttpLoggingInterceptor logging = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC);
+    private static OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
 
-    public static Retrofit getData() {
+    public static <S> S createService(Class<S> serviceClass) {
 
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
+        if(retrofit == null){
+            retrofit = new Retrofit.Builder()
+                    .baseUrl("http://api.timezonedb.com/v2/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(client)
+                    .build();
+        }
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://api.timezonedb.com/v2/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build();
 
-        return retrofit;
+        return retrofit.create(serviceClass);
     }
 }

@@ -8,20 +8,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class WeatherAPIManager {
 
     private static Retrofit retrofit = null;
+    private static HttpLoggingInterceptor logging = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
+    private static OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
 
-    public static Retrofit getData() {
+    public static <S> S createService(Class<S> serviceClass) {
 
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
+        if(retrofit == null){
+            retrofit = new Retrofit.Builder()
+                    .baseUrl("http://api.openweathermap.org/data/2.5/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(client)
+                    .build();
+        }
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://api.openweathermap.org/data/2.5/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build();
-
-        return retrofit;
+        return retrofit.create(serviceClass);
     }
+
 
 }

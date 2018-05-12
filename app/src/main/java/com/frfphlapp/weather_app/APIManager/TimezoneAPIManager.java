@@ -9,19 +9,20 @@ public class TimezoneAPIManager {
 
     private static Retrofit retrofit = null;
 
-    public static Retrofit getData() {
+    private static HttpLoggingInterceptor logging = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC);
+    private static OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
 
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
+    public static <S> S createService(Class<S> serviceClass) {
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl("https://maps.googleapis.com/maps/api/timezone/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build();
+        if(retrofit == null){
+            retrofit = new Retrofit.Builder()
+                    .baseUrl("https://maps.googleapis.com/maps/api/timezone/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(client)
+                    .build();
 
-        return retrofit;
+        }
+
+        return retrofit.create(serviceClass);
     }
 }
-

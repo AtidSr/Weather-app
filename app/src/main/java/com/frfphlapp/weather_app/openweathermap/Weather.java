@@ -25,6 +25,10 @@ public class Weather {
         return description;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
     public int getWeatherConditionIcon() {
 
         int weatherCondition = 0;
@@ -69,6 +73,11 @@ public class Weather {
             case "13d":
             case "13n":
                 weatherCondition =  R.drawable.snow;
+                break;
+
+            case "50d":
+            case "50n":
+                weatherCondition = R.drawable.fog;
                 break;
 
 
