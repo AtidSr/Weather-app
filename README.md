@@ -1,4 +1,4 @@
-# Weahter-app
+# Weather-app
 
 ## Project description
 City status is an android application that display date, time and current weather to user of this application.
