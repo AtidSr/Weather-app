@@ -41,6 +41,8 @@ public class Weather {
                 break;
 
             case "02d":
+                weatherCondition =  R.drawable.sun;
+                break;
             case "02n":
                 weatherCondition =  R.drawable.few_clouds;
                 break;
