@@ -6,9 +6,6 @@ City status is an android application that display date, time and current weathe
 ## Features
 This application provides search bar for receive city name input from user to display current date time and weather. It help user to quickly know current weather date.
 
-
-## Value Proposition
-
 ## About project
 I am interested in android application. Doing this project is better way to learn about android application.
 
