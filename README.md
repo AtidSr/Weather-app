@@ -1,15 +1,15 @@
-## Weahter-app
+# Weahter-app
 
-# Project description
+## Project description
 City status is an android application that display date, time and current weather to user of this application.
 
-# Features
+## Features
 This application provides search bar for receive city name input from user to display current date time and weather. It help user to quickly know current weather date.
 
 
 ## Value Proposition
 
-# About project
+## About project
 I am interested in android application. Doing this project is better way to learn about android application.
 
 ### API USED
@@ -27,7 +27,7 @@ API Description: This api provided weather data to user. This api require api ke
 I will get android basic knowledge such as layout, XML, JSON, Activity and android application design.
 
 ### Who is doing the project?
--5810546064 Atid Srisukhantapuek
+- 5810546064 Atid Srisukhantapuek
 
 ##
 weather icon : https://www.flaticon.com/
