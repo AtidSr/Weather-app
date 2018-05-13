@@ -8,4 +8,8 @@ public class Wind {
     private Double speed;
     @SerializedName("deg")
     private Integer deg;
+
+    public Double getSpeed() {
+        return speed;
+    }
 }

@@ -1,6 +1,7 @@
 package com.frfphlapp.weather_app;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.v4.app.ActivityCompat;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
@@ -48,6 +50,8 @@ public class Main2Activity extends AppCompatActivity {
     TextView mDescriptionTextView;
     TextView mTimeTextView;
     TextView mHumidityTextView;
+    TextView mPressureTextView;
+    TextView mWindSpeedTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,8 @@ public class Main2Activity extends AppCompatActivity {
         mImageView = findViewById(R.id.weatherIcon);
         mTimeTextView = findViewById(R.id.Time);
         mHumidityTextView = findViewById(R.id.humidity);
+        mPressureTextView = findViewById(R.id.PressureTextView);
+        mWindSpeedTextView = findViewById(R.id.Wind_Speed);
 
         mWeatherAPIService = WeatherAPIManager.createService(WeatherAPIService.class);
         mTimezoneAPIService = TimezoneAPIManager.createService(TimezoneAPIService.class);
@@ -70,13 +76,15 @@ public class Main2Activity extends AppCompatActivity {
 
 
         if (savedInstanceState != null) {
-
+            setTitle(savedInstanceState.getCharSequence("Title"));
             mTemperatureTextView.setText(savedInstanceState.getCharSequence("Temp"));
             mDescriptionTextView.setText(savedInstanceState.getCharSequence("Description"));
             mImageView.setImageResource(savedInstanceState.getInt("Image"));
             mImageView.setTag(savedInstanceState.getInt("Image"));
             mTimeTextView.setText(savedInstanceState.getCharSequence("Time"));
             mHumidityTextView.setText(savedInstanceState.getCharSequence("humidity"));
+            mPressureTextView.setText(savedInstanceState.getCharSequence("Pressure"));
+            mWindSpeedTextView.setText(savedInstanceState.getCharSequence("Wind"));
 
         }else{
             getWeatherByCurrentLocation();
@@ -98,6 +106,9 @@ public class Main2Activity extends AppCompatActivity {
                 String cityName = v.getText().toString();
                 createWeatherData(cityName);
                 textView.setText("");
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(textView.getWindowToken(), 0);
+
                 return true;
             }
         });
@@ -120,6 +131,8 @@ public class Main2Activity extends AppCompatActivity {
                     mDescriptionTextView.setText(weather.weather.get(0).getDescription());
                     mTemperatureTextView.setText(weather.main.getTemp());
                     mHumidityTextView.setText("humidity: " + weather.main.getHumidity());
+                    mPressureTextView.setText("Pressure: "+ weather.main.getPressure());
+                    mWindSpeedTextView.setText("Wind Speed: " + weather.wind.getSpeed());
 
                     createTimezone(weather.coord.getLat(), weather.coord.getLon());
 
@@ -153,6 +166,7 @@ public class Main2Activity extends AppCompatActivity {
                     mDescriptionTextView.setText(weather.weather.get(0).getDescription());
                     mTemperatureTextView.setText(weather.main.getTemp());
                     mHumidityTextView.setText("humidity: " + weather.main.getHumidity());
+
 
                     createTimezone(weather.coord.getLat(), weather.coord.getLon());
 
@@ -214,13 +228,16 @@ public class Main2Activity extends AppCompatActivity {
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-
+        savedInstanceState.putCharSequence("Title", getTitle());
         savedInstanceState.putCharSequence("Temp", mTemperatureTextView.getText());
         savedInstanceState.putCharSequence("Time", mTimeTextView.getText());
         savedInstanceState.putCharSequence("Description", mDescriptionTextView.getText());
         savedInstanceState.putCharSequence("humidity", mHumidityTextView.getText());
         if(mImageView.getTag() != null)
         savedInstanceState.putInt("Image", (Integer) mImageView.getTag());
+
+        savedInstanceState.putCharSequence("Wind", mWindSpeedTextView.getText());
+        savedInstanceState.putCharSequence("Pressure", mPressureTextView.getText());
 
 
         super.onSaveInstanceState(savedInstanceState);
