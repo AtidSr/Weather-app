@@ -36,9 +36,9 @@ public class Main2Activity extends AppCompatActivity {
     private WeatherAPIService mWeatherAPIService;
     private FusedLocationProviderClient mClient;
 
-    String openWeatherAPI_key = "Enter key here";
-    String googleMapApi_key = "Enter key here";
-    String timezoneAPI_Key = "Enter key here";
+    String openWeatherAPI_key = "c537deebb8d0b4747b9ffcfb580214fd";
+    String googleMapApi_key = "AIzaSyCAg4wLXgj61tWvvV8u-MMvz9rNc9hFYHk";
+    String timezoneAPI_Key = "IWKCFXD3O064";
 
     final long unixTime = System.currentTimeMillis() / 1000L;
 
@@ -244,7 +244,6 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onSuccess(Location location) {
                 if(location == null){
-
                 }else {
                     createWeatherDataByLocation(location.getLatitude(), location.getLatitude());
                 }
