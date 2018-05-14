@@ -1,10 +1,10 @@
 # Weather-app
 
 ## Project description
-City status is an android application that display date, time and current weather to user of this application.
+Weather app is an android application that display date, time and current weather to user of this application.
 
 ## Features
-This application provides search bar for receive city name input from user to display current date time and weather. It help user to quickly know current weather date.
+This application provides search bar for receive city name input from user to display current date time and weather. It help user to quickly know current weather and date.
 
 ## About project
 I am interested in android application. Doing this project is better way to learn about android application.
