@@ -17,11 +17,14 @@ API Description: When user call this api, It will send JSON data which is contai
 API Description: This api provided weather data to user. This api require api key so to use open weather api ( need to register).
 
 ### Library USED
-- Retrofit2
-- OKHTTP
+- [Retrofit2](http://square.github.io/retrofit/)
+- [OkHttp](http://square.github.io/okhttp/)
 
 ## Why did this worth doing?
 I will get android basic knowledge such as layout, XML, JSON, Activity and android application design.
+
+## Installation
+- APK : [here](https://drive.google.com/file/d/1xFndljBWkFWLki9CBk6JV6Iw9S087tUM/view?usp=sharing)
 
 ### Who is doing the project?
 - 5810546064 Atid Srisukhantapuek
